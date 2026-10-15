@@ -530,7 +530,7 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
       <span><b>Equity Desk Workflow</b></span>
     </a>
     <nav class="secnav" aria-label="Sections">
-      <a href="#workflow">Workflow</a><a href="#audit">Audit trail</a><a href="#product">Product</a><a href="#strategy">Build vs buy</a><a href="#trust">Trust</a>
+      <a href="#workflow">Workflow</a><a href="#audit">Audit trail</a><a href="#strategy">Build vs buy</a>
     </nav>
     <div class="bar-r">
       <span class="demo">Demo · nothing is sent</span>
@@ -545,7 +545,7 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
   <section class="intro" aria-label="Equity Desk Workflow">
     <h1 class="sr-only">Equity Desk Workflow</h1>
     <div class="guarantees">
-      <a class="trust" href="#trust"><span>Private by design</span><span>Read-only, cannot trade</span><span>Every action audited</span></a>
+      <div class="trust"><span>Private by design</span><span>Read-only, cannot trade</span><span>Every action audited</span></div>
     </div>
   </section>
 
@@ -563,54 +563,7 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
     <div class="log-wrap"><ul class="log" id="log"></ul></div>
   </section>
 
-<section class="panel" id="product" aria-labelledby="prodH">
-    <div class="panel-h"><div><span class="eyebrow">Product</span><h2 id="prodH">How the AI is designed, tested and measured</h2></div>
-      <div class="seg" role="tablist" aria-label="Product view"><button type="button" class="on" data-ptab="design" role="tab" aria-selected="true">Design</button><button type="button" data-ptab="eval" role="tab" aria-selected="false">Evaluation</button><button type="button" data-ptab="metrics" role="tab" aria-selected="false">Metrics</button></div></div>
-    <div class="ptab" data-pp="design">
-      <p class="big2">Claude reads, maps and drafts. Excel does the math. People decide.</p>
-      <div class="tablewrap"><table class="bvb"><thead><tr><th>Step</th><th>Who</th><th>What happens</th></tr></thead><tbody>
-        <tr><td>1 · Read</td><td><span class="who ai">AI</span></td><td>Reads emails, news, filings and estimates; extracts facts with sources.</td></tr>
-        <tr><td>2 · Recommend</td><td><span class="who ai">AI</span></td><td>Compares the facts with the model and suggests a change.</td></tr>
-        <tr><td>3 · Instruct</td><td><span class="who hu">Analyst</span></td><td>Types the change in plain language: years, line, value.</td></tr>
-        <tr><td>4 · Map and preview</td><td><span class="who ai">AI</span> + <span class="who xl">Excel</span></td><td>Claude finds the cells; Excel recalculates on a preview. Nothing saved.</td></tr>
-        <tr><td>5 · Accept</td><td><span class="who hu">Analyst</span></td><td>Accepts or rejects the preview.</td></tr>
-        <tr><td>6 · Write and check</td><td><span class="who ai">AI</span> + <span class="who xl">Excel</span></td><td>Writes approved cells only; automatic checks confirm nothing broke.</td></tr>
-        <tr><td>7 · Decide and approve</td><td><span class="who hu">Analyst</span>, then approvers</td><td>Analyst sets the target price; Risk, Compliance and the Portfolio manager approve.</td></tr>
-      </tbody></table></div>
-      <div class="three">
-        <div class="pp win"><b>Retrieval, not fine-tuning</b><span>Information changes daily and every claim needs a source. Retrieval keeps data in governed stores and the model swappable.</span></div>
-        <div class="pp run"><b>The AI never does arithmetic</b><span>It maps instructions to cells. Excel calculates, so numbers are exact and traceable.</span></div>
-        <div class="pp own"><b>Guardrails</b><span>Approved sources only, non-public information filtered, writes limited to input cells, everything logged and reversible.</span></div>
-      </div>
-    </div>
-    <div class="ptab" data-pp="eval" hidden>
-      <p class="big2">We don't evaluate whether the AI beats the market. We evaluate whether it is a faithful, accurate, fast assistant.</p>
-      <div class="three">
-        <div class="pp win"><b>Tier 1 · Objective checks</b><span>Facts extracted correctly, citations real, numbers match Excel, only approved cells changed. One right answer, so hundreds of test cases from our own documents.</span></div>
-        <div class="pp run"><b>Tier 2 · Judgement quality</b><span>An analyst panel rates samples: is the suggestion reasonable and well supported? Tests the reasoning, not the forecast.</span></div>
-        <div class="pp own"><b>Tier 3 · Outcomes: not evaluated</b><span>Whether a target price proves right is the analyst's accountability over years. The tool never claims it.</span></div>
-      </div>
-      <h3>Four tests for the Excel agent</h3>
-      <ul class="tl">
-        <li><b>Cell-change check:</b> only approved inputs change by hand; no formula is overwritten.</li>
-        <li><b>Recalculation match:</b> Excel's result equals the preview.</li>
-        <li><b>Replay test:</b> rerun past analyst updates from SharePoint version history; the agent should change the same cells in the same direction.</li>
-        <li><b>Red-teaming:</b> hidden instructions in emails, conflicting or stale sources, attempts to pull in non-public information.</li>
-      </ul>
-      <p class="stnote"><b>Release gate.</b> Every model or prompt change reruns the suite. It ships only if no score drops beyond the agreed threshold.</p>
-    </div>
-    <div class="ptab" data-pp="metrics" hidden>
-      <p class="big2">North star: time from new information to an approved decision.</p>
-      <div class="three">
-        <div class="pp win"><b>Leading</b><span>Activation (analysts with a model connected) · weekly active analysts · instructions per analyst · completion: preview → accepted → target price submitted.</span></div>
-        <div class="pp run"><b>Lagging</b><span>Time saved per analyst per week · companies covered per analyst · trust (survey, Undo rate) · error trend.</span></div>
-        <div class="pp own"><b>Guardrails</b><span>Compliance incidents: zero · writes without acceptance: zero by design · failed checks investigated.</span></div>
-      </div>
-      <p class="stnote">We measure speed, coverage and decision quality, not investment returns. Shipping is not the same as value.</p>
-    </div>
-  </section>
-
-  <section class="panel" id="strategy" aria-labelledby="stratH">
+<section class="panel" id="strategy" aria-labelledby="stratH">
     <div class="panel-h"><div><span class="eyebrow">Strategy</span><h2 id="stratH">Build vs buy</h2></div><span class="hint">A starting view for a working session, not a decision</span></div>
 
     <div class="principle">
@@ -631,21 +584,6 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
       <div class="split" role="img" aria-label="5 of 20 build, 15 buy, configure or reuse"><i class="sb" style="width:25%"><b>5 build · 25%</b></i><i class="so" style="width:75%"><b>15 buy, configure or reuse · 75%</b></i></div>
       <p class="stnote" style="margin:10px 0">The builds cover what cannot be outsourced: proprietary data, the investment thesis, proof the AI works on our models, institutional memory and trade protection. The analyst owns the valuation model. This demo builds everything only to show the flow; the real split would be agreed with investment, technology, risk and compliance.</p>
       <div class="tablewrap"><table class="bvb"><thead><tr><th>Feature</th><th>Principle</th><th>Call</th><th>Why</th></tr></thead><tbody><tr class="grp"><td colspan="4">Data hub</td></tr><tr class=""><td><b>Market data, estimates and earnings calendar</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Commodity; every investor buys the same feeds.</td></tr><tr class=""><td><b>News and wires</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Licensed coverage and usage rights.</td></tr><tr class=""><td><b>Filings and earnings-call transcripts</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Mature vendors, well structured.</td></tr><tr class=""><td><b>Email and SharePoint access</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Microsoft 365 and its permissions.</td></tr><tr class=""><td><b>Foundation AI model</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Improves monthly; keep it swappable.</td></tr><tr class=""><td><b>Document search and retrieval</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Standard platform; we supply the content.</td></tr><tr class=""><td><b>Materiality ranking and summaries</b></td><td><span class="bk win">Win</span></td><td><span class="call found">Buy and configure</span></td><td>Vendor engine, our rules on what matters.</td></tr><tr class="isb"><td><b>Proprietary data layer</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call build">Build</span></td><td>Portfolio-company, private-market and internal research data in one governed place. No vendor has it.</td></tr><tr class="isb"><td><b>Thesis tracker</b></td><td><span class="bk win">Win</span></td><td><span class="call build">Build</span></td><td>Links each holding to its investment thesis and structural trend; flags when evidence breaks it.</td></tr><tr class="grp"><td colspan="4">Analysis and valuation</td></tr><tr class=""><td><b>Modelling environment (Excel)</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Analysts' existing tool; we don't replace it.</td></tr><tr class=""><td><b>Excel AI agent (e.g. Claude for Excel, Copilot)</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Editing spreadsheets is generic; the AI labs and Microsoft will keep improving it.</td></tr><tr class="isb"><td><b>Model checks and workflow link around the agent</b></td><td><span class="bk win">Win</span></td><td><span class="call build">Build</span></td><td>Preview, accept, cell-change and recalculation checks, replay tests on our own models, and the link to the data hub and approval.</td></tr><tr class=""><td><b>AI evaluation tooling</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call found">Buy, own the data</span></td><td>Vendor tool; results on which suggestions worked stay in-house.</td></tr><tr class="grp"><td colspan="4">Approve</td></tr><tr class=""><td><b>Approval workflow</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Firm workflow platform.</td></tr><tr class=""><td><b>Restricted lists and compliance systems</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Compliance owns the source of truth.</td></tr><tr class=""><td><b>Identity, access and audit logging</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Firm security stack.</td></tr><tr class="isb"><td><b>Investment memory</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call build">Build</span></td><td>Every decision's rationale, evidence and outcome, searchable. Institutional knowledge that compounds.</td></tr><tr class="grp"><td colspan="4">Execute</td></tr><tr class="isb"><td><b>Trade protection layer</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call build">Build</span></td><td>Pre-trade checks, ticket hand-off, who sees trade intent.</td></tr><tr class=""><td><b>Order management, execution and brokers</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Regulated and run by trading.</td></tr><tr class=""><td><b>Transaction cost analysis</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Standard vendor analytics.</td></tr></tbody></table></div>
-    </div>
-  </section>
-
-  <section class="panel" id="trust" aria-labelledby="trustH">
-    <div class="panel-h"><div><span class="eyebrow">Trust</span><h2 id="trustH">Privacy, security and compliance</h2></div></div>
-    <div class="trust-grid">
-      <div class="tcol"><h3>Privacy</h3><p class="tp">Data stays with the analyst.</p>
-        <ul class="tl"><li>Models are read in the browser, never uploaded.</li><li>Nothing is saved; a reload clears everything.</li><li>The AI sees only what you send, only when you ask.</li></ul>
-        <p class="prod"><b>In production:</b> runs in the firm's own systems, data kept in-region, enterprise AI terms, Microsoft 365 permissions.</p></div>
-      <div class="tcol"><h3>Security</h3><p class="tp">The tool cannot trade, and trade intent stays protected.</p>
-        <ul class="tl"><li>Read-only access to data.</li><li>Tickets only from fully approved decisions, checked before hand-off.</li><li>The agent edits the model only when you press Apply, and it can be undone.</li></ul>
-        <p class="prod"><b>In production:</b> single sign-on with multi-factor authentication, role-based access, encryption, and trade intent visible only to the people who need it.</p></div>
-      <div class="tcol"><h3>Compliance</h3><p class="tp">Every decision is explainable.</p>
-        <ul class="tl"><li>The analyst proposes; three others approve.</li><li>Full audit trail with roles and times, exportable.</li><li>Rationale, evidence and the model change travel with each decision.</li></ul>
-        <p class="prod"><b>In production:</b> live restricted lists, screening for non-public information, tamper-evident records, and AI governance assessed against MAS's FEAT principles and Technology Risk Management Guidelines.</p></div>
     </div>
   </section>
 
@@ -1685,7 +1623,7 @@ document.getElementById('loadEx').addEventListener('click', () => {
   ['risk', 'comp'].forEach(r => approve(S.props[0].id, r, 'ok'));
   S.tab = 3; render(); toast('Example loaded: two of three approvals in. Approve as Portfolio manager to finish.');
 });
-document.getElementById('product').addEventListener('click', e => { const b = e.target.closest('[data-ptab]'); if (!b) return;
+document.getElementById('product')?.addEventListener('click', e => { const b = e.target.closest('[data-ptab]'); if (!b) return;
   document.querySelectorAll('#product [data-ptab]').forEach(x => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-selected', on); });
   document.querySelectorAll('#product .ptab').forEach(x => x.hidden = x.dataset.pp !== b.dataset.ptab); });
 S = load();
