@@ -154,6 +154,7 @@ a{color:var(--accent);text-underline-offset:2px}
 .locknote{padding:24px;border:1px dashed var(--line-strong);border-radius:var(--r);background:var(--surface);display:flex;flex-direction:column;gap:8px}
 .section{scroll-margin-top:110px}
 section.panel{scroll-margin-top:110px}
+.stage{scroll-margin-top:110px}
 
 /* ---------- tags, chips, ratings ---------- */
 .tag{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;padding:2px 7px;border-radius:4px;border:1px solid var(--line-strong);color:var(--muted);white-space:nowrap}
@@ -434,20 +435,25 @@ table.xg{border-collapse:collapse;width:100%;min-width:560px;font-size:12.5px;fo
 .tcell{display:flex;flex-direction:column;gap:3px;min-width:0}
 .tcell .v{font-family:var(--mono);font-size:17px}
 
-/* ---------- audit rail ---------- */
-.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 112px);display:flex;flex-direction:column;gap:14px}
-.rail .panel{padding:16px}
-.log{display:flex;flex-direction:column;gap:0;margin:0;padding:0;list-style:none;max-height:56vh;overflow:auto}
-.log li{position:relative;display:grid;grid-template-columns:12px minmax(0,1fr);gap:4px 10px;padding:9px 0;font-size:13px}
-.log li::after{content:"";position:absolute;left:4px;top:24px;bottom:-6px;width:1px;background:var(--line)}
-.log li:last-child::after{display:none}
-.log .ts{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.log .dot{width:9px;height:9px;border-radius:50%;margin-top:5px;background:var(--accent);box-shadow:0 0 0 3px var(--surface)}
+/* ---------- audit trail section ---------- */
+.audit-tools{display:flex;align-items:center;gap:10px;flex-direction:row!important}
+.audit-note{max-width:80ch;margin-top:-4px}
+.log-wrap{border:1px solid var(--line);border-radius:8px;overflow:auto;max-height:440px;background:var(--surface)}
+.log{display:flex;flex-direction:column;margin:0;padding:0;list-style:none;min-width:640px}
+.log li{display:grid;grid-template-columns:84px 150px minmax(0,1fr) 104px;gap:12px;align-items:baseline;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+.log li:last-child{border-bottom:0}
+.log li:nth-child(even):not(.log-h){background:var(--sunk)}
+.log .log-h{position:sticky;top:0;z-index:1;background:var(--sunk);font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-block:8px;border-bottom:1px solid var(--line-strong)}
+.log .log-empty{display:block;padding:18px 14px}
+.log .ts{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.log .ev{min-width:0;overflow-wrap:anywhere}
+.log .kind{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.log .kind.ok{color:var(--up)} .log .kind.no{color:var(--down)} .log .kind.w{color:var(--warn)} .log .kind.i{color:var(--accent)}
+.log .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
 .log .dot.ok{background:var(--up)} .log .dot.no{background:var(--down)} .log .dot.w{background:var(--warn)}
-.actor{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:1px 6px;border-radius:3px;background:var(--sunk);border:1px solid var(--line-strong);color:var(--muted);margin-right:6px;vertical-align:1px}
+.actor{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:2px 6px;border-radius:3px;background:var(--sunk);border:1px solid var(--line-strong);color:var(--muted);white-space:nowrap}
 .pillars{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
-.pillars li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;font-size:13px;align-items:start}
-.pillars .pk{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--up);padding:2px 6px;border:1px solid color-mix(in srgb,var(--up) 50%,transparent);border-radius:4px;margin-top:1px;min-width:62px;text-align:center}
+@media (max-width:760px){.log{min-width:0}.log li{grid-template-columns:auto minmax(0,1fr);gap:4px 10px}.log .log-h{display:none}.log li .ev{grid-column:1 / -1}.log li .kind{grid-column:1 / -1}}
 
 /* ---------- reference sections ---------- */
 .refhead{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:flex-end;justify-content:space-between}
@@ -499,7 +505,7 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
 @keyframes tin{from{opacity:0;transform:translate(-50%,6px)}to{opacity:1;transform:translate(-50%,0)}}
 
 /* ---------- responsive ---------- */
-@media (max-width:1180px){.layout{grid-template-columns:1fr}.rail{position:static}.rail .log{max-height:340px}.lanes{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:1180px){.lanes{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:1000px){.intro{grid-template-columns:1fr}.model-grid2{grid-template-columns:1fr}.valrow{grid-template-columns:1fr 1fr}}
 @media (max-width:980px){.ecal-grid,.bookgrid,.trust-grid,.three,.dims{grid-template-columns:1fr}}
 @media (max-width:900px){.model-grid{grid-template-columns:1fr}.xl-body{grid-template-columns:1fr}.xl-sheet{border-right:0;border-bottom:1px solid var(--line)}.tprow{grid-template-columns:1fr}.secnav{display:none}}
@@ -524,7 +530,7 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
       <span><b>Information to Execution</b><span class="mark-s">Equity desk workflow</span></span>
     </a>
     <nav class="secnav" aria-label="Sections">
-      <a href="#workflow">Workflow</a><a href="#product">Product</a><a href="#strategy">Build vs buy</a><a href="#trust">Trust</a>
+      <a href="#workflow">Workflow</a><a href="#audit">Audit trail</a><a href="#product">Product</a><a href="#strategy">Build vs buy</a><a href="#trust">Trust</a>
     </nav>
     <div class="bar-r">
       <span class="demo">Demo · nothing is sent</span>
@@ -546,25 +552,16 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
   <span id="workflow" class="section" aria-hidden="true"></span>
   <nav class="steps" role="tablist" aria-label="Workflow stages" id="steps"></nav>
 
-  <div class="layout">
-    <main class="stage" id="stage"></main>
-    <aside class="rail" aria-labelledby="auditH">
-      <div class="panel">
-        <div class="panel-h"><h3 id="auditH">Audit trail</h3><span class="hint" id="logCount"></span></div>
-        <ul class="log" id="log"></ul>
-        <button class="btn small" type="button" id="exportAudit" hidden>Export audit trail (CSV)</button>
-      </div>
-      <div class="panel">
-        <h3>Controls in force</h3>
-        <ul class="pillars">
-          <li><span class="pk">Privacy</span><span>Uploaded models are read in your browser. Nothing is stored; a reload clears everything.</span></li>
-          <li><span class="pk">Security</span><span>The tool reads data and drafts tickets. It cannot place an order.</span></li>
-          <li><span class="pk">Comply</span><span>Analyst proposes, three others approve. Every action is logged with who did it and when.</span></li>
-        </ul>
-        <a class="btn small" href="#trust" style="text-decoration:none;align-self:flex-start">How it is protected</a>
-      </div>
-    </aside>
-  </div>
+  <main class="stage" id="stage"></main>
+
+  <section class="panel audit" id="audit" aria-labelledby="auditH">
+    <div class="panel-h">
+      <div><span class="eyebrow">Record</span><h2 id="auditH">Audit trail</h2></div>
+      <div class="audit-tools"><span class="hint" id="logCount"></span><button class="btn small" type="button" id="exportAudit" hidden>Export CSV</button></div>
+    </div>
+    <p class="hint audit-note">Every action in this session, newest first: who did it, when, and what changed. Nothing reaches the trading team without an entry here.</p>
+    <div class="log-wrap"><ul class="log" id="log"></ul></div>
+  </section>
 
 <section class="panel" id="product" aria-labelledby="prodH">
     <div class="panel-h"><div><span class="eyebrow">Product</span><h2 id="prodH">How the AI is designed, tested and measured</h2></div>
@@ -1576,7 +1573,10 @@ function renderExecute() {
 
 /* ---------- Render + events ---------- */
 function renderLog() {
-  document.getElementById('log').innerHTML = S.log.length ? S.log.map(e => `<li><span class="dot ${e.kind}"></span><span><span class="actor">${e.actor || 'Analyst'}</span>${esc(e.text)}<br><span class="ts">${e.ts}</span></span></li>`).join('') : '<li><span></span><span class="hint">No actions yet. Open GOOGL in Analysis and valuation to work with the model agent, or load the example decision.</span></li>';
+  const kindLab = k => k === 'ok' ? 'Done' : k === 'no' ? 'Rejected' : k === 'w' ? 'Pending' : 'Info';
+  document.getElementById('log').innerHTML = S.log.length
+    ? '<li class="log-h" aria-hidden="true"><span>Time</span><span>Role</span><span>Event</span><span>Status</span></li>' + S.log.map(e => `<li><span class="ts">${e.ts}</span><span><span class="actor">${e.actor || 'Analyst'}</span></span><span class="ev">${esc(e.text)}</span><span class="kind ${e.kind || 'i'}"><i class="dot ${e.kind}"></i>${kindLab(e.kind)}</span></li>`).join('')
+    : '<li class="log-empty"><span class="hint">No actions yet. Open GOOGL in Analysis and valuation to work with the model agent, or load the example decision.</span></li>';
   document.getElementById('logCount').textContent = S.log.length ? S.log.length + ' entries' : '';
 }
 function render() {
