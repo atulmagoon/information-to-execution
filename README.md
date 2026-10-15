@@ -1,4 +1,4 @@
-# Information to Execution
+# Equity Desk Workflow
 
 A working demo of a gated equity-team workflow: from new information to an approved decision and a limit order, with every step on the record.
 
