@@ -19,7 +19,7 @@ A working demo of a gated equity-team workflow: from new information to an appro
 
 ## What is real and what is simulated
 
-Real: holdings and weights from a public Q2 2026 13F filing, prices to the 14 Oct 2026 close and the September CPI print, consensus figures, and paraphrased, attributed headlines. Simulated: the emails, analyst models, house ratings, approvers, policy limits and the trading team. No real emails are sent and no orders are placed.
+Real: holdings and weights from a public Q2 2026 13F filing, prices to the 15 Oct 2026 close and the September CPI print, consensus figures, and paraphrased, attributed headlines. Simulated: the emails, analyst models, house ratings, approvers, policy limits and the trading team. No real emails are sent and no orders are placed.
 
 In the browser version, questions to the model agent are answered with calculations from the model. Live written answers from Claude run in the claude.ai version.
 
