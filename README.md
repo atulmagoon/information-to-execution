@@ -20,7 +20,7 @@ The demo stops at the approved decision. Order handling stays with the trading t
 
 ## What is real and what is simulated
 
-Real: holdings and weights from a public Q2 2026 13F filing, prices to the 15 Oct 2026 close and the September CPI print, consensus figures, and paraphrased, attributed headlines. Simulated: the emails, analyst models, house ratings, approvers and policy limits, which illustrate a standard desk process. No real emails are sent and no orders are placed.
+Real: holdings and weights from Temasek's public Q3 2026 13F filing (filed 28 Oct 2026), prices to the 17 Nov 2026 close, consensus figures, and paraphrased, attributed headlines, including NVIDIA's results of 17 Nov. Simulated: the emails, analyst models, house ratings, approvers and policy limits, which illustrate a standard desk process. No real emails are sent and no orders are placed.
 
 In the browser version, questions to the model agent are answered with calculations from the model. Live written answers from Claude run in the claude.ai version.
 
