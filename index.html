@@ -120,7 +120,7 @@ a{color:var(--accent);text-underline-offset:2px}
 .linkbtn{border:0;background:none;color:var(--accent);cursor:pointer;padding:0;font:inherit;text-decoration:underline;text-underline-offset:2px}
 
 /* ---------- gated pipeline ---------- */
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;scroll-margin-top:110px;position:relative}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;scroll-margin-top:110px;position:relative}
 .step{position:relative;display:flex;gap:12px;align-items:flex-start;padding:14px 16px 16px;border:1px solid var(--line);background:var(--surface);text-align:left;cursor:pointer;min-width:0;margin-left:-1px;transition-property:background-color,border-color;transition-duration:.15s}
 .step:first-child{border-radius:var(--r) 0 0 var(--r);margin-left:0}
 .step:last-child{border-radius:0 var(--r) var(--r) 0}
@@ -510,7 +510,7 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
 @media (max-width:980px){.ecal-grid,.bookgrid,.trust-grid,.three,.dims{grid-template-columns:1fr}}
 @media (max-width:900px){.model-grid{grid-template-columns:1fr}.xl-body{grid-template-columns:1fr}.xl-sheet{border-right:0;border-bottom:1px solid var(--line)}.tprow{grid-template-columns:1fr}.secnav{display:none}}
 @media (max-width:760px){
-  .steps{grid-template-columns:1fr 1fr;gap:8px}
+  .steps{grid-template-columns:1fr;gap:8px}
   .step,.step:first-child,.step:last-child{border-radius:var(--r);margin-left:0}
   .step + .step::before{display:none}
   .an-grid,.digest{grid-template-columns:1fr}.lanes{grid-template-columns:1fr 1fr}
@@ -554,7 +554,7 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
       <div><span class="eyebrow">Record</span><h2 id="auditH">Audit trail</h2></div>
       <div class="audit-tools"><span class="hint" id="logCount"></span><button class="btn small" type="button" id="exportAudit" hidden>Export CSV</button></div>
     </div>
-    <p class="hint audit-note">Every action in this session, newest first: who did it, when, and what changed. Nothing reaches the trading team without an entry here.</p>
+    <p class="hint audit-note">Every action in this session, newest first: who did it, when, and what changed. No rating or target price changes without an entry here.</p>
     <div class="log-wrap"><ul class="log" id="log"></ul></div>
   </section>
 
@@ -578,13 +578,13 @@ table.bvb{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
     <div><span class="lbl">Layer 3 · Applied to this workflow</span>
       <div class="split" role="img" aria-label="5 of 20 build, 15 buy, configure or reuse"><i class="sb" style="width:25%"><b>5 build · 25%</b></i><i class="so" style="width:75%"><b>15 buy, configure or reuse · 75%</b></i></div>
       <p class="stnote" style="margin:10px 0">The builds cover what cannot be outsourced: proprietary data, the investment thesis, proof the AI works on our models, institutional memory and trade protection. The analyst owns the valuation model. This demo builds everything only to show the flow; the real split would be agreed with investment, technology, risk and compliance.</p>
-      <div class="tablewrap"><table class="bvb"><thead><tr><th>Feature</th><th>Principle</th><th>Call</th><th>Why</th></tr></thead><tbody><tr class="grp"><td colspan="4">Data hub</td></tr><tr class=""><td><b>Market data, estimates and earnings calendar</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Commodity; every investor buys the same feeds.</td></tr><tr class=""><td><b>News and wires</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Licensed coverage and usage rights.</td></tr><tr class=""><td><b>Filings and earnings-call transcripts</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Mature vendors, well structured.</td></tr><tr class=""><td><b>Email and SharePoint access</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Microsoft 365 and its permissions.</td></tr><tr class=""><td><b>Foundation AI model</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Improves monthly; keep it swappable.</td></tr><tr class=""><td><b>Document search and retrieval</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Standard platform; we supply the content.</td></tr><tr class=""><td><b>Materiality ranking and summaries</b></td><td><span class="bk win">Win</span></td><td><span class="call found">Buy and configure</span></td><td>Vendor engine, our rules on what matters.</td></tr><tr class="isb"><td><b>Proprietary data layer</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call build">Build</span></td><td>Portfolio-company, private-market and internal research data in one governed place. No vendor has it.</td></tr><tr class="isb"><td><b>Thesis tracker</b></td><td><span class="bk win">Win</span></td><td><span class="call build">Build</span></td><td>Links each holding to its investment thesis and structural trend; flags when evidence breaks it.</td></tr><tr class="grp"><td colspan="4">Analysis and valuation</td></tr><tr class=""><td><b>Modelling environment (Excel)</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Analysts' existing tool; we don't replace it.</td></tr><tr class=""><td><b>Excel AI agent (e.g. Claude for Excel, Copilot)</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Editing spreadsheets is generic; the AI labs and Microsoft will keep improving it.</td></tr><tr class="isb"><td><b>Model checks and workflow link around the agent</b></td><td><span class="bk win">Win</span></td><td><span class="call build">Build</span></td><td>Preview, accept, cell-change and recalculation checks, replay tests on our own models, and the link to the data hub and approval.</td></tr><tr class=""><td><b>AI evaluation tooling</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call found">Buy, own the data</span></td><td>Vendor tool; results on which suggestions worked stay in-house.</td></tr><tr class="grp"><td colspan="4">Approve</td></tr><tr class=""><td><b>Approval workflow</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Firm workflow platform.</td></tr><tr class=""><td><b>Restricted lists and compliance systems</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Compliance owns the source of truth.</td></tr><tr class=""><td><b>Identity, access and audit logging</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Firm security stack.</td></tr><tr class="isb"><td><b>Investment memory</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call build">Build</span></td><td>Every decision's rationale, evidence and outcome, searchable. Institutional knowledge that compounds.</td></tr><tr class="grp"><td colspan="4">Execute</td></tr><tr class="isb"><td><b>Trade protection layer</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call build">Build</span></td><td>Pre-trade checks, ticket hand-off, who sees trade intent.</td></tr><tr class=""><td><b>Order management, execution and brokers</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Regulated and run by trading.</td></tr><tr class=""><td><b>Transaction cost analysis</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Standard vendor analytics.</td></tr></tbody></table></div>
+      <div class="tablewrap"><table class="bvb"><thead><tr><th>Feature</th><th>Principle</th><th>Call</th><th>Why</th></tr></thead><tbody><tr class="grp"><td colspan="4">Data hub</td></tr><tr class=""><td><b>Market data, estimates and earnings calendar</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Commodity; every investor buys the same feeds.</td></tr><tr class=""><td><b>News and wires</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Licensed coverage and usage rights.</td></tr><tr class=""><td><b>Filings and earnings-call transcripts</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Mature vendors, well structured.</td></tr><tr class=""><td><b>Email and SharePoint access</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Microsoft 365 and its permissions.</td></tr><tr class=""><td><b>Foundation AI model</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Improves monthly; keep it swappable.</td></tr><tr class=""><td><b>Document search and retrieval</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Standard platform; we supply the content.</td></tr><tr class=""><td><b>Materiality ranking and summaries</b></td><td><span class="bk win">Win</span></td><td><span class="call found">Buy and configure</span></td><td>Vendor engine, our rules on what matters.</td></tr><tr class="isb"><td><b>Proprietary data layer</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call build">Build</span></td><td>Portfolio-company, private-market and internal research data in one governed place. No vendor has it.</td></tr><tr class="isb"><td><b>Thesis tracker</b></td><td><span class="bk win">Win</span></td><td><span class="call build">Build</span></td><td>Links each holding to its investment thesis and structural trend; flags when evidence breaks it.</td></tr><tr class="grp"><td colspan="4">Analysis and valuation</td></tr><tr class=""><td><b>Modelling environment (Excel)</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Analysts' existing tool; we don't replace it.</td></tr><tr class=""><td><b>Excel AI agent (e.g. Claude for Excel, Copilot)</b></td><td><span class="bk run">Run</span></td><td><span class="call buy">Buy</span></td><td>Editing spreadsheets is generic; the AI labs and Microsoft will keep improving it.</td></tr><tr class="isb"><td><b>Model checks and workflow link around the agent</b></td><td><span class="bk win">Win</span></td><td><span class="call build">Build</span></td><td>Preview, accept, cell-change and recalculation checks, replay tests on our own models, and the link to the data hub and approval.</td></tr><tr class=""><td><b>AI evaluation tooling</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call found">Buy, own the data</span></td><td>Vendor tool; results on which suggestions worked stay in-house.</td></tr><tr class="grp"><td colspan="4">Approve</td></tr><tr class=""><td><b>Approval workflow</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Firm workflow platform.</td></tr><tr class=""><td><b>Restricted lists and compliance systems</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Compliance owns the source of truth.</td></tr><tr class=""><td><b>Identity, access and audit logging</b></td><td><span class="bk run">Run</span></td><td><span class="call own">Reuse</span></td><td>Firm security stack.</td></tr><tr class="isb"><td><b>Investment memory</b></td><td><span class="bk own">Can't lose</span></td><td><span class="call build">Build</span></td><td>Every decision's rationale, evidence and outcome, searchable. Institutional knowledge that compounds.</td></tr></tbody></table></div>
     </div>
   </section>
 
   <footer class="foot">
-    <p><b>What is real and what is simulated.</b> Real: the holdings, share counts and weights (Temasek 13F, Q2 2026), prices and daily candles to the 15 October 2026 close, the September CPI print, valuation figures, analyst consensus, and the news, filings and sell-side headlines in Data hub, which are paraphrased and attributed. Simulated: the emails, the sample analyst models (forecast assumptions, method and house target prices; Alphabet's 2023–2025 actuals are real), the house ratings, the approvers and their approvals, the compliance policy limits, and the trading team. ICICI Bank's chart runs to 9 October because the source's history stopped there; its valuation uses the 15 October quote.</p>
-    <p><b>Data notes.</b> Sources differ on Alphabet's weight (8.7% here from the filing data; 6.7% in one news summary, likely counting a single share class). NVIDIA's share count differs between two tables in the same source (8.63M vs 8.40M). Weights are of the full $37.25B disclosed 13F book, so this top 10 sums to 53%.</p>
+    <p><b>What is real and what is simulated.</b> Real: the holdings, share counts and weights (Temasek 13F, Q2 2026), prices and daily candles to the 15 October 2026 close, the September CPI print, valuation figures, analyst consensus, and the news, filings and sell-side headlines in Data hub, which are paraphrased and attributed. Simulated: the emails, the sample analyst models (forecast assumptions, method and house target prices; Alphabet's 2023–2025 actuals are real), the house ratings, the approvers and their approvals, and the compliance policy limits. The ratings, limits and approval steps illustrate a standard desk process. ICICI Bank's chart runs to 9 October because the source's history stopped there; its valuation uses the 15 October quote.</p>
+    <p><b>Data notes.</b> Alphabet combines both share classes (7.08M Class A and 2.00M Class C), so its weight is 8.7% here; summaries that count Class A only show about 6.8%. NVIDIA's share count differs between two tables in the same source (8.63M vs 8.40M). Weights are of the full $37.25B disclosed 13F book, so this top 10 sums to 53%.</p>
     <p><b>Sources</b></p>
     <ol>
       <li><a href="https://equibles.com/institutions/1021944" target="_blank" rel="noopener">Equibles: Temasek Holdings 13F, period ending 30 Jun 2026</a></li>
@@ -812,8 +812,7 @@ const stageState = () => {
   return [
     { n: 1, name: 'Data hub', sub: 'Every source, per company', st: 'open', label: (() => { const a = H.filter(h => ['pre', 'post'].includes(earnPhase(h).k)).length; return a ? a + ' earnings review' + (a > 1 ? 's' : '') + ' to do' : 'Open'; })() },
     { n: 2, name: 'Analysis and valuation', sub: 'Book, model, target price', st: anyProp ? 'done' : 'open', label: anyProp ? 'Proposal submitted' : 'Open' },
-    { n: 3, name: 'Approve', sub: 'Request and record approval', st: !anyProp ? 'locked' : aligned ? 'done' : 'pending', label: !anyProp ? 'Locked · needs a TP or rating change' : aligned ? 'Approved' : pending ? 'Waiting for approval' : 'Closed' },
-    { n: 4, name: 'Execute', sub: 'Limit order to the trading team', st: !aligned ? 'locked' : sent ? 'done' : 'open', label: !aligned ? 'Locked · needs approval' : sent ? 'Sent to trading team' : 'Ready to send' }
+    { n: 3, name: 'Approve', sub: 'Request and record approval', st: !anyProp ? 'locked' : aligned ? 'done' : 'pending', label: !anyProp ? 'Locked · needs a TP or rating change' : aligned ? 'Approved' : pending ? 'Waiting for approval' : 'Closed' }
   ];
 };
 function renderSteps() {
@@ -823,7 +822,7 @@ function renderSteps() {
 }
 function go(n) {
   const st = stageState()[n - 1];
-  if (st.st === 'locked') { toast(n === 3 ? 'Approve unlocks when a target price or rating change is submitted in Analysis and valuation.' : 'Execute unlocks when a proposal is approved.'); return; }
+  if (st.st === 'locked') { toast('Approve unlocks when a target price or rating change is submitted in Analysis and valuation.'); return; }
   S.tab = n; save(); render();
   document.getElementById('steps').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -1462,47 +1461,8 @@ function renderAlign() {
         </div>
         <div class="approvers">${ROLES.map(r => { const a = p.appr[r.k];
           return `<div class="appr ${a === 'ok' ? 'ok' : a === 'no' ? 'no' : ''}"><span class="who">${r.who}</span><span class="what">${r.what}</span>${a ? `<span class="res ${a === 'ok' ? 'up' : 'down'}">${a === 'ok' ? 'Approved' : 'Rejected'} · ${p.apprTs[r.k]}</span>` : p.status === 'pending' ? `<span style="display:flex;gap:6px"><button class="btn small good" type="button" data-appr="${p.id}:${r.k}:ok" ${hard ? 'disabled' : ''}>Approve</button><button class="btn small bad" type="button" data-appr="${p.id}:${r.k}:no">Reject</button></span>` : '<span class="res muted">No response</span>'}</div>`; }).join('')}</div>
-        ${p.status === 'aligned' ? `<p><b class="up">Approved.</b> House TP for ${p.t} is now ${usd(p.tpTo, 0)}, rated ${p.to}. <button class="btn small primary" type="button" data-go="4">Prepare the order →</button></p>` : ''}
+        ${p.status === 'aligned' ? `<p><b class="up">Approved.</b> House TP for ${p.t} is now ${usd(p.tpTo, 0)}, rated ${p.to}. The decision is recorded in the audit trail and passes to the trading team through the firm's existing order process.</p>` : ''}
       </article>`; }).join('');
-}
-
-/* ---------- Stage 4: Execute ---------- */
-function suggestAction(p) {
-  const h = BY[p.t], rank = { Sell: 0, Hold: 1, Buy: 2 };
-  if (rank[p.to] < rank[p.from]) return { side: 'Sell', qty: Math.round(h.sh * 0.25 / 100) * 100, why: 'Rating cut: trim a quarter of the position' };
-  if (rank[p.to] > rank[p.from] || (p.tpTo / p.tpFrom - 1) * 100 >= 3) return { side: 'Buy', qty: Math.round(h.sh * 0.05 / 100) * 100, why: 'Higher target: add 5% to the position' };
-  return { side: 'None', qty: 0, why: 'Target cut without a rating change: no trade suggested' };
-}
-function renderExecute() {
-  const ready = S.props.filter(p => ['aligned', 'sent', 'closed'].includes(p.status));
-  if (!ready.length) return `<div class="locknote"><h3>Execute is locked</h3><p class="hint">An order can be prepared only after a target price or rating change is approved by all three approvers.</p></div>`;
-  return `<section class="panel"><div class="panel-h"><div><span class="eyebrow">Stage 4</span><h2>Execute · send to the trading team</h2></div><span class="hint">Approved decisions arrive here as order tickets. Fill in the quantity and limit price, then send. Execution and fills are the trading team's job.</span></div></section>` +
-    ready.slice().reverse().map(p => {
-      const h = BY[p.t], sug = suggestAction(p), sent = p.status === 'sent';
-      if (p.status === 'closed') return `<article class="prop"><div class="prop-h"><span class="ttl"><span class="mono">${p.t}</span> · TP ${usd(p.tpTo, 0)} · ${p.to}</span><span class="status aligned">No trade</span></div><p class="hint">Recorded at ${p.closedTs}: no order needed for this decision.</p></article>`;
-      if (!p.side) p.side = sug.side === 'Sell' ? 'Sell' : 'Buy';
-      const qty = p.qty || 0, o = orderFor(h, p.side, qty), lim = p.limit ?? +(p.side === 'Sell' ? h.px * 0.995 : h.px * 1.005).toFixed(2);
-      const coll = Math.abs(lim / h.px - 1) * 100, collOk = coll <= POLICY.collarPct, ok = qty > 0 && collOk;
-      return `<article class="ticket"><div class="ticket-h"><span>Order ticket <b>${p.ticket || 'DRAFT'}</b></span><span class="status ${sent ? 'sent' : 'aligned'}">${sent ? 'Sent to trading team · awaiting execution' : 'Approved · fill in and send'}</span></div>
-        <div class="ticket-b"><div class="tgrid">
-          <div class="tcell field" style="gap:2px"><label for="side-${p.id}" class="lbl" style="font-size:11.5px">Side</label>${sent ? `<span class="v ${p.side === 'Sell' ? 'down' : 'up'}">${p.side}</span>` : `<select id="side-${p.id}" data-side="${p.id}"><option ${p.side === 'Buy' ? 'selected' : ''}>Buy</option><option ${p.side === 'Sell' ? 'selected' : ''}>Sell</option></select>`}</div>
-          <div class="tcell"><span class="lbl">Security</span><span class="v">${h.t}</span><span class="hint">${h.name}, US-listed</span></div>
-          <div class="tcell field" style="gap:2px"><label for="qty-${p.id}" class="lbl" style="font-size:11.5px">Quantity (shares)</label>${sent ? `<span class="v">${qty.toLocaleString('en-US')}</span>` : `<input id="qty-${p.id}" type="number" step="100" min="0" placeholder="Enter shares" value="${p.qty || ''}" data-qty="${p.id}" style="font-family:var(--mono)">`}<span class="hint">${qty ? (qty / h.sh * 100).toFixed(1) + '% of the ' + (h.sh / 1e6).toFixed(2) + 'M-share position' : `Position ${(h.sh / 1e6).toFixed(2)}M sh${sug.qty ? ` · e.g. ${sug.qty.toLocaleString('en-US')} (${sug.why.split(': ')[1]})` : ''}`}</span></div>
-          <div class="tcell field" style="gap:2px"><label for="lim-${p.id}" class="lbl" style="font-size:11.5px">Limit price</label>${sent ? `<span class="v">${usd(lim)}</span>` : `<input id="lim-${p.id}" type="number" step="0.01" value="${lim.toFixed(2)}" data-lim="${p.id}" style="font-family:var(--mono)">`}<span class="hint">Last ${usd(h.px)} · ${pc((lim / h.px - 1) * 100, 2)}</span></div>
-          <div class="tcell"><span class="lbl">Order type</span><span class="v">Limit</span><span class="hint">Time in force: Day</span></div>
-          <div class="tcell"><span class="lbl">Notional</span><span class="v">${qty ? big(qty * lim) : '—'}</span></div>
-          <div class="tcell"><span class="lbl">Execution</span><span class="v">${qty ? (o.days > 1 ? o.days + ' days' : 'Today') : '—'}</span><span class="hint">≤${POLICY.maxAdvPct}% of ADV per day</span></div>
-          <div class="tcell"><span class="lbl">Decision link</span><span class="v">${p.id}</span><span class="hint">TP ${usd(p.tpTo, 0)}, ${p.to}, approved ${p.alignedTs}</span></div>
-        </div>
-        <ul class="checks">
-          <li><span class="ic ${qty > 0 ? 'up' : 'muted'}">${qty > 0 ? '✓' : 'i'}</span><span>${qty > 0 ? 'Quantity entered' : 'Enter a quantity to send the order'}</span></li>
-          <li><span class="ic ${collOk ? 'up' : 'down'}">${collOk ? '✓' : '!'}</span><span>${collOk ? `Price collar: limit is within ${POLICY.collarPct}% of the last price` : `Limit ${usd(lim)} is ${coll.toFixed(1)}% ${lim > h.px ? 'above' : 'below'} the last price of ${usd(h.px)}. The collar allows ${POLICY.collarPct}%, to stop a mistyped price reaching the trading team. <button class="linkbtn" type="button" data-limreset="${p.id}">Use ${usd(+(p.side === 'Sell' ? h.px * 0.995 : h.px * 1.005).toFixed(2))}</button>`}</span></li>
-          <li><span class="ic up">✓</span><span>Linked to a decision approved by Risk, Compliance and the Portfolio manager</span></li>
-          ${qty ? `<li><span class="ic ${o.advPct <= POLICY.maxAdvPct ? 'up' : 'warn'}">${o.advPct <= POLICY.maxAdvPct ? '✓' : '!'}</span><span>Size ${o.advPct.toFixed(0)}% of 20-day average volume${o.advPct > POLICY.maxAdvPct ? `: trading team to work it over ${o.days} days` : ''}</span></li>` : ''}
-        </ul>
-        <p class="guard"><span>🔒</span><span>This tool cannot place orders. It hands the ticket, linked to decision ${p.id} and its three approvals, to the trading team's order system.</span></p>
-        ${sent ? `<p class="hint">Sent to the trading team at ${p.sentTs} (simulated). No order was placed with any broker or exchange.</p>` : `<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button class="btn primary" type="button" data-send="${p.id}" ${ok ? '' : 'disabled'}>Send to trading team</button><button class="btn" type="button" data-notrade="${p.id}">No trade needed</button><span class="hint">Simulated hand-off.</span></div>`}
-        </div></article>`; }).join('');
 }
 
 /* ---------- Render + events ---------- */
@@ -1516,7 +1476,7 @@ function renderLog() {
 function render() {
   renderSteps();
   const st = document.getElementById('stage');
-  st.innerHTML = S.tab === 1 ? renderResearch() : S.tab === 2 ? renderAnalyze() : S.tab === 3 ? renderAlign() : renderExecute();
+  st.innerHTML = S.tab === 1 ? renderResearch() : S.tab === 2 ? renderAnalyze() : renderAlign();
   renderLog(); updImplied();
   const xm = document.getElementById('xsMsgs'); if (xm) xm.scrollTop = xm.scrollHeight;
   if (render.lastTab !== undefined && render.lastTab !== S.tab) { const el = document.getElementById('steps'); if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
@@ -1596,7 +1556,7 @@ function approve(id, role, res) {
   const who = ROLES.find(r => r.k === role).who;
   log(`${p.id}: ${who} ${res === 'ok' ? 'approved' : 'rejected'}`, res === 'ok' ? 'ok' : 'no');
   if (res === 'no') { p.status = 'rejected'; log(`${p.id}: rejected; ${p.t} stays ${p.from} with TP ${usd(p.tpFrom, 0)}`, 'no'); }
-  else if (ROLES.every(r => p.appr[r.k] === 'ok')) { p.status = 'aligned'; p.alignedTs = now(); S.house[p.t] = p.to; S.houseTP[p.t] = p.tpTo; log(`${p.id}: approved. ${p.t} house TP ${usd(p.tpTo, 0)}, rated ${p.to}`, 'ok'); toast('Approved. Execute is now open.'); }
+  else if (ROLES.every(r => p.appr[r.k] === 'ok')) { p.status = 'aligned'; p.alignedTs = now(); S.house[p.t] = p.to; S.houseTP[p.t] = p.tpTo; log(`${p.id}: approved. ${p.t} house TP ${usd(p.tpTo, 0)}, rated ${p.to}`, 'ok'); toast('Approved and recorded.'); }
   render();
 }
 function sendOrder(id) {
