@@ -707,7 +707,7 @@ for (const h of H) { const T = tech(h.t); h.vol = T.vol; h.setup = T.setup; h.rs
 /* ---------- State ---------- */
 const KEY = 'r2e-demo-v1';
 let S;
-function fresh() { const m = { GOOGL: GOOGL_MODEL() }, tp = {}; H.forEach(h => tp[h.t] = h.t === 'GOOGL' ? Math.round(mcalc(m.GOOGL).tp) : Math.round(h.tgt * 0.95 / (h.px > 100 ? 5 : 0.5)) * (h.px > 100 ? 5 : 0.5)); return { houseTP: tp, tpDraft: null, house: { ...HOUSE0 }, props: [], log: [], lane: null, stock: null, mailOpen: null, sel: 'GOOGL', tab: 1, seq: 1, reviews: {}, notified: {}, review: null, synView: 'brief', calSel: 'NVDA', calDay: '2026-11-17', co: 'NVDA', sec: null, models: m }; }
+function fresh() { const m = { GOOGL: GOOGL_MODEL() }, tp = {}; H.forEach(h => tp[h.t] = h.t === 'GOOGL' ? Math.round(mcalc(m.GOOGL).tp) : Math.round(h.tgt * 0.95 / (h.px > 100 ? 5 : 0.5)) * (h.px > 100 ? 5 : 0.5)); return { houseTP: tp, tpDraft: null, house: { ...HOUSE0 }, props: [], log: [], lane: null, stock: null, mailOpen: null, sel: 'GOOGL', tab: 1, seq: 1, reviews: {}, notified: {}, review: null, synView: 'heat', calSel: 'NVDA', calDay: '2026-11-17', co: 'NVDA', sec: null, models: m }; }
 function load() { try { localStorage.removeItem(KEY); } catch (e) {} return fresh(); }
 function save() {}
 
@@ -798,8 +798,8 @@ function renderResearch() {
   const li = i => `<li><span>${esc(i.txt)}<span class="meta">${esc(i.src)}</span></span></li>`;
   const mail = m => `<li><span><b>${esc(m.subj)}</b><span class="meta">${esc(m.from)} · ${m.at} · <span class="tag sample">simulated</span></span><span class="mtext">${esc(m.body)}</span></span></li>`;
   const macro = MAIL.filter(m => !m.t);
-  const v = S.synView || 'brief';
-  const views = [['brief', 'Briefing'], ['heat', 'Signal heatmap']];
+  const v = S.synView || 'heat';
+  const views = [['heat', 'Signal heatmap'], ['brief', 'Briefing']];
   return `<section class="panel"><div class="panel-h"><div><span class="eyebrow">Stage 1</span><h2>Data hub · Wednesday 18 November 2026</h2></div>
       <div class="seg" role="tablist" aria-label="Snapshot view">${views.map(([k, l]) => `<button type="button" role="tab" aria-selected="${v === k}" class="${v === k ? 'on' : ''}" data-view="${k}">${l}</button>`).join('')}</div></div>
     ${v === 'brief' ? viewBrief(co) : viewHeat(co)}</section>
