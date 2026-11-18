@@ -768,10 +768,10 @@ function viewBrief(co) {
   return `<p class="hint">Ranked by materiality, weighted by position size. Select a row for the full picture.</p>
     <ol class="brief">${ranked().map(({ h, m, b }, i) => `<li class="${h.t === co ? 'sel' : ''}" data-co="${h.t}" tabindex="0">
       <span class="rk">${i + 1}</span>
-      <span class="bd"><span class="bh">${dirIc(b.dir)}<b class="mono">${h.t}</b><span class="muted">${h.name} · ${h.w.toFixed(1)}%</span><span class="mat ${m.lvl}">${m.lvl}</span></span>
-        <span class="bl">${esc(b.line)}</span>
-        <span class="bs">${srcNames(h.t).join(' · ')}${m.why.length ? ` <span class="bw">· why it ranks: ${m.why.join(', ')}</span>` : ''}</span></span></li>`).join('')}</ol>
-    <p class="hint">Materiality points: results out (4), review requested by the team (2), a 4%+ day move (2), a 5%+ week move (1), a street rating or target change (1), reporting within 3 days (1). High is 4 or more, Medium 2–3. Direction (▲ ▼ ●) is Claude's read of the cited items.</p>`;
+      <span class="bd"><span class="bh"><b class="mono">${h.t}</b><span class="muted">${h.name}</span><span class="mono ${h.d >= 0 ? 'up' : 'down'}" title="Change on the last close (17 Nov)">${pc(h.d, 2)} on the day</span><span class="mat ${m.lvl}">${m.lvl}</span></span>
+        <span class="bl">${dirIc(b.dir)} ${esc(b.line)}</span>
+        <span class="bs"><b>${h.w.toFixed(1)}% of book</b> · ${srcNames(h.t).join(' · ')}${m.why.length ? ` <span class="bw">· why it ranks: ${m.why.join(', ')}</span>` : ''}</span></span></li>`).join('')}</ol>
+    <p class="hint">Materiality points: results out (4), review requested by the team (2), a 4%+ day move (2), a 5%+ week move (1), a street rating or target change (1), reporting within 3 days (1). High is 4 or more, Medium 2–3. The % next to each ticker is the price change on the last close. The arrow before each summary (▲ ▼ ●) is Claude's read of the news, not the price.</p>`;
 }
 function priceSig(h) { return h.setup === 'Uptrend' && h.r1w > 0 ? 1 : h.setup === 'Downtrend' || h.r1w <= -5 ? -1 : 0; }
 function viewHeat(co) {
@@ -781,7 +781,7 @@ function viewHeat(co) {
     const S2 = SIG[h.t], ps = priceSig(h), ed = h.earn ? dayDiff(h.earn, TODAY) : null;
     const earn = ed == null ? cell(null, 'Not set') : ed <= 0 && ed >= -2 ? cell(-0.5, 'Reported') : ed > 0 && ed <= 5 ? cell(-0.5, 'In ' + ed + 'd') : cell(0, fmtDay(h.earn).replace(/^\w+ /, ''));
     const lab = v => v > 0 ? 'Positive' : v < 0 ? 'Negative' : 'Neutral';
-    return `<tr class="${h.t === co ? 'sel' : ''}" data-co="${h.t}"><td class="nmc"><b class="mono">${h.t}</b> <span class="muted">${h.w.toFixed(1)}%</span></td>
+    return `<tr class="${h.t === co ? 'sel' : ''}" data-co="${h.t}"><td class="nmc"><b class="mono">${h.t}</b> <span class="mono ${h.d >= 0 ? 'up' : 'down'}">${pc(h.d, 1)}</span> <span class="muted">· ${h.w.toFixed(1)}% of book</span></td>
       ${cell(S2.news, lab(S2.news))}${cell(S2.street, S2.street > 0 ? 'Raised' : S2.street < 0 ? 'Cut' : 'No change')}${cell(ps, h.setup + ' · ' + pc(h.r1w, 0))}${earn}</tr>`;
   }).join('');
   return `<div class="tablewrap"><table class="heat"><thead><tr><th>Company</th>${cols.map(c => `<th>${c[1]}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>
